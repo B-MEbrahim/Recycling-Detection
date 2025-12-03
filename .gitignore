@@ -1,0 +1,11 @@
+*.pt
+*.torchscript
+src/inference/quantize_model.py
+src/api/
+src/training/
+src/distillation/
+__pycache__/
+.env.example
+Dockerfile
+outputs/
+runs/
