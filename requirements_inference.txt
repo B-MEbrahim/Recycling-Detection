@@ -1,0 +1,4 @@
+# Minimal requirements for inference only
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+pillow>=10.0.0
