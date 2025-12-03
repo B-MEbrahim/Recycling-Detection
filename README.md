@@ -9,12 +9,16 @@
 pip install -r requirements.txt
 ```
 
-3. **Run webcam detection:**
+3. **Download Model:**
+
+Model link: https://drive.google.com/file/d/1WO9gqODtNO_U2_7rDI7IbJRHl9DHW1fg/view?usp=sharing
+
+4. **Run webcam detection:**
 ```bash
 python src/inference/webcam_demo.py
 ```
 
-4. **Run image detection:**
+5. **Run image detection:**
 ```bash
 # Edit IMAGE_PATH in the file, then run:
 python src/inference/image_processor.py
