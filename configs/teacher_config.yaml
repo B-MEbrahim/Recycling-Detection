@@ -1,0 +1,26 @@
+# Teacher model configuration
+model: "yolov8x.pt"  # Large model as teacher
+epochs: 100
+imgsz: 640
+batch_size: 16
+name: "recycling_teacher"
+project: "runs/train"
+
+# Optimization
+patience: 50
+save_period: 10
+device: "0"  # GPU
+workers: 8
+
+# Hyperparameters
+optimizer: "auto"
+lr0: 0.01
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+warmup_epochs: 3
+warmup_momentum: 0.8
+box: 7.5
+cls: 0.5
+dfl: 1.5
+amp: true
