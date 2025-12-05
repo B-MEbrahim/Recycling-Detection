@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycling Object Detection</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>♻️ Recycling Object Detection</h1>
+            <p>Upload an image or use your webcam to detect recyclable materials</p>
+        </header>
+
+        <!-- Mode Selection -->
+        <div class="mode-selector">
+            <button class="mode-btn active" id="uploadModeBtn" onclick="switchMode('upload')">
+                📁 Upload Image
+            </button>
+            <button class="mode-btn" id="webcamModeBtn" onclick="switchMode('webcam')">
+                📹 Use Webcam
+            </button>
+        </div>
+
+        <!-- Upload Mode -->
+        <div id="uploadMode" class="mode-content active">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p>Drag & Drop your image here</p>
+                    <p class="upload-text-or">or</p>
+                    <label for="fileInput" class="btn btn-primary">Choose File</label>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <div class="image-container">
+                    <img id="uploadedImage" src="" alt="Uploaded image">
+                    <div class="loading" id="uploadLoading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Detecting objects...</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="detectBtn" onclick="detectFromUpload()">
+                    🔍 Detect Objects
+                </button>
+                <button class="btn btn-secondary" onclick="resetUpload()">
+                    🔄 Upload Another
+                </button>
+            </div>
+
+            <div class="results-section" id="uploadResults" style="display: none;">
+                <h3>Detection Results</h3>
+                <img id="uploadResultImage" src="" alt="Detection result">
+                <div class="detections-list" id="uploadDetectionsList"></div>
+            </div>
+        </div>
+
+        <!-- Webcam Mode -->
+        <div id="webcamMode" class="mode-content">
+            <div class="webcam-section">
+                <div class="video-container">
+                    <video id="webcamVideo" autoplay playsinline></video>
+                    <canvas id="webcamCanvas" style="display: none;"></canvas>
+                    <div class="loading" id="webcamLoading" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Processing...</p>
+                    </div>
+                </div>
+                
+                <div class="webcam-controls">
+                    <button class="btn btn-primary" id="startWebcamBtn" onclick="startWebcam()">
+                        ▶️ Start Webcam
+                    </button>
+                    <button class="btn btn-danger" id="stopWebcamBtn" onclick="stopWebcam()" style="display: none;">
+                        ⏹️ Stop Webcam
+                    </button>
+                    <button class="btn btn-success" id="captureBtn" onclick="captureFrame()" style="display: none;">
+                        📸 Capture & Detect
+                    </button>
+                </div>
+            </div>
+
+            <div class="results-section" id="webcamResults" style="display: none;">
+                <h3>Detection Results</h3>
+                <img id="webcamResultImage" src="" alt="Detection result">
+                <div class="detections-list" id="webcamDetectionsList"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by YOLO • Built for Recycling Detection</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
