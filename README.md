@@ -1,5 +1,19 @@
 # Recycling Detection - Inference Setup
 
+## Overview
+
+This project uses **YOLOv8** for detecting recyclable objects in images and video streams.
+
+### Dataset
+- **TrashNet** from Roboflow
+- Link: https://universe.roboflow.com/nguyen-tuan-anh/trashnet-q8b5e
+
+### Model
+- **YOLOv8** (You Only Look Once v8) by Ultralytics
+- Pre-trained and fine-tuned on TrashNet dataset
+
+---
+
 ## Quick Start
 
 1. **Install Python 3.8 or higher**
