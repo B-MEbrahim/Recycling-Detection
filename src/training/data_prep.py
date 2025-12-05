@@ -11,7 +11,7 @@ class DatasetDownloader:
     self.project_name = project_name
     self.rf = Roboflow(api_key=api_key)
 
-  def download_dataset(self, version: int = 1, format: str = 'yolov8'):
+  def download_dataset(self, version: int = 2, format: str = 'yolov8'):
     project = self.rf.workspace(self.workspace).project(self.project_name)
     dataset = project.version(version).download(format)
     self.create_dataset_yaml(dataset.location)
@@ -29,7 +29,7 @@ class DatasetDownloader:
       config = {
           'path': str(dataset_path.absolute()),
           'train': 'train/images',
-          'val': 'val/images',
+          'val': 'valid/images',
           'test': 'test/images',
           'nc': len(data['names']),
           'names': data['names']
