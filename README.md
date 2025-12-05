@@ -113,16 +113,23 @@ Recycling/
 ├── models/
 │   └── teacher/
 │       └── best.pt          # YOLO model weights
+├── notebooks/
+│   ├── data_and_train.ipynb # Data preparation and training notebook
+│   └── model_eval.ipynb     # Model evaluation notebook
 ├── src/
 │   ├── api/
 │   │   ├── main.py          # FastAPI application
 │   │   ├── routes.py        # API endpoints
 │   │   ├── schemas.py       # Pydantic models
 │   │   └── utils.py         # Utility functions
-│   └── inference/
-│       ├── detector.py      # Detection class
-│       ├── webcam_demo.py   # Webcam script
-│       └── image_processor.py
+│   ├── inference/
+│   │   ├── detector.py      # Detection class
+│   │   ├── webcam_demo.py   # Webcam script
+│   │   └── image_processor.py
+│   └── training/
+│       ├── __init__.py      # Package initializer
+│       ├── data_prep.py     # Data preparation utilities
+│       └── train_teacher.py # Teacher model training script
 ├── web/
 │   ├── static/
 │   │   ├── css/style.css
