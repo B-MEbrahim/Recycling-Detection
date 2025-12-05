@@ -1,8 +1,7 @@
 *.pt
 *.torchscript
+src/training/train_student.py
 src/inference/quantize_model.py
-src/api/
-src/training/
 src/distillation/
 __pycache__/
 .env.example
