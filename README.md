@@ -13,28 +13,121 @@ pip install -r requirements.txt
 
 Model link: https://drive.google.com/file/d/1WO9gqODtNO_U2_7rDI7IbJRHl9DHW1fg/view?usp=sharing
 
-4. **Run webcam detection:**
+Place the model file at: `models/teacher/best.pt`
+
+---
+
+## Web API & Interface
+
+### Start the Web Server
+```bash
+python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Then open your browser to: **http://localhost:8000**
+
+### Web Interface Features
+- **Upload Mode**: Drag & drop or select an image file to detect recyclable objects
+- **Webcam Mode**: Use your webcam for real-time capture and detection
+
+### API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Web interface |
+| `/api/v1/detect` | POST | Detect objects from base64 image |
+| `/api/v1/detect/upload` | POST | Detect objects from uploaded file |
+| `/api/v1/detect/batch` | POST | Process multiple images |
+| `/api/v1/models` | GET | List available models |
+| `/api/v1/health` | GET | Health check |
+| `/api/v1/stats` | GET | Detection statistics |
+| `/ws/detect` | WebSocket | Real-time detection stream |
+
+### API Examples
+
+**Detect from Base64 Image:**
+```bash
+curl -X POST "http://localhost:8000/api/v1/detect" \
+  -H "Content-Type: application/json" \
+  -d '{"image": "data:image/jpeg;base64,/9j/4AAQ..."}'
+```
+
+**Upload Image File:**
+```bash
+curl -X POST "http://localhost:8000/api/v1/detect/upload" \
+  -F "file=@your_image.jpg"
+```
+
+**Response Format:**
+```json
+{
+  "detections": [
+    {
+      "class_name": "plastic_bottle",
+      "confidence": 0.85,
+      "class_id": 0,
+      "bbox": [148.5, 60.7, 274.6, 216.8]
+    }
+  ],
+  "annotated_image": "data:image/jpeg;base64,...",
+  "image_size": "512x384",
+  "model_used": "teacher",
+  "inference_time": 0.234
+}
+```
+
+---
+
+## Command Line Tools
+
+### Webcam Detection
 ```bash
 python src/inference/webcam_demo.py
 ```
 
-5. **Run image detection:**
+### Image Detection
 ```bash
 # Edit IMAGE_PATH in the file, then run:
 python src/inference/image_processor.py
 ```
 
-## Files Needed
-- `models/teacher/best.pt` - YOLO model weights
-- `src/inference/detector.py` - Detection class
-- `src/inference/webcam_demo.py` - Webcam script
-- `src/inference/image_processor.py` - Image processing script
+---
 
-## Keyboard Controls
+## Project Structure
+```
+Recycling/
+├── models/
+│   └── teacher/
+│       └── best.pt          # YOLO model weights
+├── src/
+│   ├── api/
+│   │   ├── main.py          # FastAPI application
+│   │   ├── routes.py        # API endpoints
+│   │   ├── schemas.py       # Pydantic models
+│   │   └── utils.py         # Utility functions
+│   └── inference/
+│       ├── detector.py      # Detection class
+│       ├── webcam_demo.py   # Webcam script
+│       └── image_processor.py
+├── web/
+│   ├── static/
+│   │   ├── css/style.css
+│   │   └── js/app.js
+│   └── templates/
+│       └── index.html
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Keyboard Controls (Desktop Apps)
 - **q** - Quit
 - **s** - Save frame
 - **p** - Pause/Resume (webcam only)
 - **f** - Fullscreen toggle
+
+---
 
 ## Troubleshooting
 
@@ -43,6 +136,20 @@ python src/inference/image_processor.py
 pip install ultralytics
 ```
 
+**ImportError: No module named 'fastapi'**
+```bash
+pip install fastapi uvicorn python-multipart
+```
+
 **Can't find model file:**
 - Make sure `best.pt` is in `models/teacher/` folder
-- Or specify path: `--model path/to/your/model.pt`
+- Or update the model path in `src/api/routes.py`
+
+**Port 8000 already in use:**
+```bash
+python -m uvicorn src.api.main:app --port 8001
+```
+
+**CORS errors in browser:**
+- The API should be accessed from the same origin (localhost:8000)
+- For external access, add CORS middleware to FastAPI
