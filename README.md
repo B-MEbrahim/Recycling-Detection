@@ -1,4 +1,30 @@
-# Recycling Detection - Inference Setup
+# ♻️ Recycling Object Detection
+
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-orange.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)
+
+A deep learning-based system for detecting and classifying recyclable materials in images and video streams. Built with **YOLOv8** for object detection and **FastAPI** for the web interface and REST API.
+
+## Features
+
+- **Real-time Detection** - Detect recyclable objects in images and webcam streams
+- **Web Interface** - User-friendly drag-and-drop interface for image upload
+- **REST API** - Full-featured API for integration with other applications
+- **Webcam Support** - Live detection using your device's camera
+- **Fast Inference** - Optimized for speed with configurable inference size
+
+## Detected Classes
+
+The model can detect various recyclable materials including:
+- Plastic bottles
+- Glass bottles
+- Aluminum cans
+- Cardboard
+- Paper
+- And more...
+
+---
 
 ## Overview
 
