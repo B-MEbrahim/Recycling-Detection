@@ -38,6 +38,19 @@ This project uses **YOLOv8** for detecting recyclable objects in images and vide
 - **YOLOv8** (You Only Look Once v8) by Ultralytics
 - Pre-trained and fine-tuned on TrashNet dataset
 
+### Training Results
+![Training Metrics](runs/test/training_metrics.png)
+
+### Model Performance
+
+```yaml
+metrics:
+  precision: 0.5072
+  recall: 0.6562
+  mAP50: 0.5944
+  mAP50-95: 0.5695
+```
+
 ---
 
 ## Quick Start
