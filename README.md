@@ -74,10 +74,10 @@ Place the model file at: `models/teacher/best.pt`
 
 ### Start the Web Server
 ```bash
-python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+python -m uvicorn src.api.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Then open your browser to: **http://localhost:8000**
+Then open your browser to: **http://127.0.0.1:8000**
 
 ### Web Interface Features
 - **Upload Mode**: Drag & drop or select an image file to detect recyclable objects
