@@ -1,0 +1,16 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Training and distillation directories
+src/training/
+src/distillation/
+
+# Other common exclusions
+.git/
+.gitignore
+*.md
+.env
+.venv/
+venv/
