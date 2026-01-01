@@ -6,6 +6,28 @@
 
 A deep learning-based system for detecting and classifying recyclable materials in images and video streams. Built with **YOLOv8** for object detection and **FastAPI** for the web interface and REST API.
 
+## Problem Statement
+
+### The Challenge
+Improper waste sorting is a significant environmental problem. Many recyclable materials end up in landfills because:
+- Manual sorting is time-consuming and error-prone
+- People often don't know which materials are recyclable
+- Recycling facilities struggle to efficiently process mixed waste streams
+
+### Our Solution
+This project provides an **automated recyclable material detection system** that can:
+1. **Identify recyclable objects** in real-time from images or video streams
+2. **Classify materials** into categories (plastic, glass, metal, cardboard, paper, etc.)
+3. **Provide visual feedback** with bounding boxes and confidence scores
+
+### Use Cases
+- **Smart Recycling Bins**: Integrate with IoT devices to automatically sort waste
+- **Educational Tools**: Help users learn which items are recyclable
+- **Recycling Facilities**: Assist in automated sorting pipelines
+- **Environmental Audits**: Analyze waste composition in images
+
+---
+
 ## Features
 
 - **Real-time Detection** - Detect recyclable objects in images and webcam streams
@@ -67,6 +89,34 @@ pip install -r requirements.txt
 Model link: https://drive.google.com/file/d/1WO9gqODtNO_U2_7rDI7IbJRHl9DHW1fg/view?usp=sharing
 
 Place the model file at: `models/teacher/best.pt`
+
+---
+
+## Containerization
+
+You can run the application in a Docker container for easy deployment.
+
+### Prerequisites
+- [Docker](https://www.docker.com/get-started) installed on your machine
+
+### Build the Docker Image
+```bash
+docker build -t recycling-detector .
+```
+
+### Run the Container
+```bash
+docker run -p 8000:8000 recycling-detector
+```
+
+The application will be available at **http://localhost:8000**
+
+
+### Mount Local Model (Optional)
+If you want to use a local model file without rebuilding the image:
+```bash
+docker run -p 8000:8000 -v ./models/teacher:/app/models/teacher recycling-detector
+```
 
 ---
 
