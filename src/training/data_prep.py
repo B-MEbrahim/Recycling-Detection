@@ -3,10 +3,16 @@ import yaml
 from roboflow import Roboflow
 from pathlib import Path
 import shutil
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 class DatasetDownloader:
-  def __init__(self, api_key: str, workspace: str, project_name: str):
-    self.api_key = api_key
+  def __init__(self, workspace: str, project_name: str, api_key: str = None):
+    self.api_key = api_key or os.getenv('ROBOFLOW_API_KEY')
+    if not self.api_key:
+      raise ValueError("API key not provided. Set ROBOFLOW_API_KEY in .env file or pass api_key parameter.")
     self.workspace = workspace
     self.project_name = project_name
     self.rf = Roboflow(api_key=api_key)
