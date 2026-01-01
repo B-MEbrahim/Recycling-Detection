@@ -11,7 +11,7 @@ import base64
 from contextlib import asynccontextmanager
 
 from .routes import router
-from src.inference.detector import RecyclingDetector
+from src.inference.detector import RecyclingDetector 
 
 # Global detector instance
 detector = None
