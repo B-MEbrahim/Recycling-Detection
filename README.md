@@ -84,7 +84,15 @@ metrics:
 pip install -r requirements.txt
 ```
 
-3. **Download Model:**
+3. **Configure Environment Variables:**
+
+Copy the example environment file and add your Roboflow API key:
+```bash
+cp .env.example .env
+```
+Then edit `.env` and replace `your_roboflow_api_key_here` with your actual API key from [Roboflow Settings](https://app.roboflow.com/settings/api).
+
+4. **Download Model:**
 
 Model link: https://drive.google.com/file/d/1WO9gqODtNO_U2_7rDI7IbJRHl9DHW1fg/view?usp=sharing
 
