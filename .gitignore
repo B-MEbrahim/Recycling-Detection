@@ -4,7 +4,7 @@ src/training/train_student.py
 src/inference/quantize_model.py
 src/distillation/
 __pycache__/
-.env.example
+.env
 Dockerfile
 outputs/
 runs/
